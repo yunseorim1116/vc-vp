@@ -6,6 +6,7 @@ import { Holder } from "@/components/Holder";
 import { Loading } from "@/components/common/Loading";
 import { useState } from "react";
 import { Verifier } from "@/components/Verifier";
+import Image from "next/image";
 
 export default function asyncHome() {
   const [step, setStep] = useState("issue");
@@ -34,8 +35,17 @@ export default function asyncHome() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 ">
       <div className="mt-24 w-[48rem]">
+        <div className="flex justify-center items-center mb-8 pr-5">
+          <Image
+            src="/삼.png"
+            layout="intrinsic"
+            alt="sd-vc-concept"
+            width={570} //이미지 원본크기
+            height={381}
+          />
+        </div>
         <Description step={step} />
         {loading ? <Loading /> : <>{renderStepComponent()}</>}
       </div>
