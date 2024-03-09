@@ -9,6 +9,7 @@ import { Explain } from "./common/Explain";
 import "./button.css";
 import { Chapter } from "./common/Chapter";
 import { Content } from "./common/Content";
+import { Badge } from "@/components/ui/badge";
 
 export const Credential = ({
   setStep,
@@ -39,21 +40,36 @@ export const Credential = ({
         text2="(Issuer)"
         desc="재학 증명서 발급해보기 (Credential)"
       />
-      <Button
-        className="blinking text-2xl font-bold bg-slate-700 mt-8"
-        onClick={() => setStep("holder")}
-      >
-        ➔ NEXT STEP
-      </Button>
+
       <Explain description="우리는 학교측에 대학 증명서를 발급해달라 요청했어요. 이제 학교(Issuer) 는 증명서를 발급할거예요." />
 
-      <Button onClick={createCredential} className="mr-4 mb-8">
+      <Button
+        onClick={createCredential}
+        className={`mr-4 mb-8 ${credential ? "" : "blinking"}`}
+      >
         발급하기 (issue)
       </Button>
+
       <Button>issue 코드보기</Button>
 
       {/* step1 */}
       <CredentialStep1 credential={credential} />
+
+      {!credential && (
+        <>
+          <div className="flex justify-end">
+            <Badge
+              variant="secondary"
+              className="cursor-pointer p-2 mt-8"
+              onClick={() => setStep("holder")}
+            >
+              ➔ You Can Skip it!
+            </Badge>
+          </div>
+
+          <br />
+        </>
+      )}
 
       {/* step2 */}
       <CredentialStep2

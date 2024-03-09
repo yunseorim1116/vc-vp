@@ -1,24 +1,24 @@
 .blinking {
-  -webkit-animation: blink 2s ease-in-out infinite alternate;
-  -moz-animation: blink 2s ease-in-out infinite alternate;
-  animation: blink 2s ease-in-out infinite alternate;
+  -webkit-animation: blink 1s ease-in-out infinite alternate;
+  -moz-animation: blink 1s ease-in-out infinite alternate;
+  animation: blink 1s ease-in-out infinite alternate;
 }
 
 @-webkit-keyframes blink {
   0% {
-    opacity: 0;
+    opacity: 0.6;
   }
   100% {
     opacity: 1;
   }
 }
 .blinking:hover {
-  transform: scale(1.1); /* Adjust the scale factor as needed */
+  transform: scale(1.01); /* Adjust the scale factor as needed */
 }
 
 @-moz-keyframes blink {
   0% {
-    opacity: 0;
+    opacity: 0.6;
   }
   100% {
     opacity: 1;
@@ -27,7 +27,7 @@
 
 @keyframes blink {
   0% {
-    opacity: 0;
+    opacity: 0.6;
   }
   100% {
     opacity: 1;
