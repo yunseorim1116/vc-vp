@@ -1,9 +1,11 @@
+"use client";
+
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
-const getSDjwtInstance = async () => {
+export const getCredential = async () => {
   try {
-    const res = await axios.get("http://localhost:3000/api/sdjwt", {
+    const res = await axios.get("http://localhost:3000/api/credential", {
       headers: { method: "GET" },
     });
     return res.data;
@@ -13,9 +15,11 @@ const getSDjwtInstance = async () => {
 };
 export const useGetSDInstance = () => {
   const { data: instance } = useQuery({
-    queryKey: ["getInstance"],
-    queryFn: getSDjwtInstance,
+    queryKey: ["credential"],
+    queryFn: getCredential,
   });
+
+  console.log(instance);
 
   return instance;
 };
