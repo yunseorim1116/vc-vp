@@ -17,7 +17,7 @@ export default function asyncHome() {
     setTimeout(() => {
       setLoading(false);
       setStep(step);
-    }, 1500);
+    }, 1000);
   };
 
   const renderStepComponent = () => {
@@ -36,14 +36,8 @@ export default function asyncHome() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="mt-24 w-[48rem]">
-        {loading ? (
-          <Loading />
-        ) : (
-          <>
-            <Description step={step} />
-            {renderStepComponent()}
-          </>
-        )}
+        <Description step={step} />
+        {loading ? <Loading /> : <>{renderStepComponent()}</>}
       </div>
     </main>
   );

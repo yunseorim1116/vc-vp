@@ -32,12 +32,6 @@ export const Credential = ({
 
   return (
     <div className="mt-16">
-      <Button
-        className="blinking text-2xl font-bold bg-slate-700 mt-8"
-        onClick={() => setStep("holder")}
-      >
-        ➔ NEXT STEP
-      </Button>
       <h1 className="text-6xl font-bold pb-4 border-b-2 border-solid border-gray-200">
         🏫 학교<span className="text-4xl font-bold"> (Issuer)</span>
       </h1>
