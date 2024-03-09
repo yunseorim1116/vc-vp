@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Explain } from "./common/Explain";
 import "./button.css";
 import { Chapter } from "./common/Chapter";
+import { Content } from "./common/Content";
 
 export const Credential = ({
   setStep,
@@ -32,13 +33,19 @@ export const Credential = ({
   };
 
   return (
-    <div className="mt-16">
+    <>
       <Chapter
         text="🏫 학교"
         text2="(Issuer)"
         desc="재학 증명서 발급해보기 (Credential)"
       />
-      <Explain description="토큰을 받아 sd-jwt와 jwt 디버깅 사이트에서서 decode 해보았어요." />
+      <Button
+        className="blinking text-2xl font-bold bg-slate-700 mt-8"
+        onClick={() => setStep("holder")}
+      >
+        ➔ NEXT STEP
+      </Button>
+      <Explain description="우리는 학교측에 대학 증명서를 발급해달라 요청했어요. 이제 학교(Issuer) 는 증명서를 발급할거예요." />
 
       <Button onClick={createCredential} className="mr-4 mb-8">
         발급하기 (issue)
@@ -61,7 +68,7 @@ export const Credential = ({
         claims={claims}
         setStep={setStep}
       />
-    </div>
+    </>
   );
 };
 
@@ -77,15 +84,13 @@ interface CredentialStepProps {
 
 const CredentialStep1 = ({ credential }: CredentialStepProps) => (
   <>
-    <div className="max-w-500 flex flex-wrap pb-8 border rounded-md p-4 mb-4 bg-slate-50">
-      {credential ? (
-        <p className="break-all">{credential}</p>
-      ) : (
-        <p className="flex justify-center items-center text-gray-500 mt-4">
-          증명서를 발급해주세요.
-        </p>
-      )}
-    </div>
+    {credential ? (
+      <Content>{credential}</Content>
+    ) : (
+      <Content>
+        <p className="text-gray-500 mb-4">증명서를 발급해주세요.</p>
+      </Content>
+    )}
     <Explain
       description="issue 함수를 실행시키면 VC가
   발급이 돼요. 그렇다면 발급하기 버튼을 누를때마다 계속해서 토큰이
@@ -130,23 +135,34 @@ export const CredentialStep3 = ({
     <>
       {credential && isCompleteEncode && (
         <>
-          <Button> 완료!</Button>
-          <div className="max-w-500 flex  pb-8  border rounded-md p-8 mb-4 mt-4 bg-slate-50 overflow-scroll">
-            <div className="w-1/2 ">
-              <Link href="https://www.sdjwt.co/" className="font-bold mb-4">
-                (링크) sd-jwt 디버깅 사이트를 통해 decode 한 값
-              </Link>
+          <Button className="mb-8"> 완료!</Button>
+          <Content>
+            <div className="max-w-500 flex p-8mb-4 mt-4overflow-scroll">
+              <div className="w-1/2 ">
+                <Link href="https://www.sdjwt.co/" className="font-bold mb-4">
+                  (링크) sd-jwt 디버깅 사이트를 통해 decode 한 값
+                </Link>
 
-              <JsonFormatter json={claims} tabWith={4} jsonStyle={jsonStyle} />
-            </div>
-            <div className="w-1/2 ">
-              <Link href="https://jwt.io/" className="font-bold mb-4">
-                (링크) jwt 디버깅 사이트를 통해 decode 한 값
-              </Link>
+                <JsonFormatter
+                  json={claims}
+                  tabWith={4}
+                  jsonStyle={jsonStyle}
+                />
+              </div>
+              <div className="w-1/2 ">
+                <Link href="https://jwt.io/" className="font-bold mb-4">
+                  (링크) jwt 디버깅 사이트를 통해 decode 한 값
+                </Link>
 
-              <JsonFormatter json={sdDatas} tabWith={5} jsonStyle={jsonStyle} />
+                <JsonFormatter
+                  json={sdDatas}
+                  tabWith={5}
+                  jsonStyle={jsonStyle}
+                />
+              </div>
             </div>
-          </div>
+          </Content>
+
           <Explain
             description="토큰을 받아 sd-jwt와 jwt 디버깅 사이트에서 decode 해보았어요.
       이처럼 우리가 흔히 알고있는 encode 함수를 돌리면 오른쪽처럼 프레임이 숨겨진 것을 볼 수 있어요."

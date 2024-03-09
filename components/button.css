@@ -41,12 +41,12 @@
 
 .moving-image {
   right: 0;
-  animation: slideLeft 3s linear 1;
+  animation: slideLeft 2s linear 1;
 }
 
 @keyframes slideLeft {
   from {
-    transform: translateX(70%);
+    transform: translateX(100%);
   }
   to {
     transform: translateX(-100%);

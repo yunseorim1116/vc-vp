@@ -1,6 +1,6 @@
 import React from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-
+import { Content } from "next/font/google";
 const isMission1Complete = (step: string) =>
   step === "holder" || step === "verify";
 
