@@ -1,7 +1,13 @@
 import React from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
-export const Description = () => {
+const isMission1Complete = (step: string) =>
+  step === "holder" || step === "present";
+
+const isMission2Complete = (step: string) =>
+  step !== "holder" && step !== "issue";
+
+export const Description = ({ step }: { step: string }) => {
   return (
     <Alert className="bg-slate-50">
       <AlertTitle className="text-2xl font-bold">📜 시나리오</AlertTitle>
@@ -11,12 +17,16 @@ export const Description = () => {
         <br />
         <br />
         <p>
-          <span className="font-bold">✔️ Mssion1 :</span> 나는 학교를 상대로
-          재학 증명서를 받아내야 합니다.
+          <span className="font-bold">
+            {isMission1Complete(step) ? "[ ✔️ ]" : "[ ]"} Mssion1 :
+          </span>
+          나는 학교를 상대로 재학 증명서를 받아내야 합니다.
         </p>
         <p>
-          <span className="font-bold">✔️ Mssion2 :</span> 받은 재학 증명서를
-          과외 플랫폼에 제출해야 합니다.
+          <span className="font-bold">
+            {isMission2Complete(step) ? "[ ✔️ ]" : "[  ]"} Mssion2 :
+          </span>
+          받은 재학 증명서를 과외 플랫폼에 제출해야 합니다.
         </p>
       </AlertDescription>
     </Alert>

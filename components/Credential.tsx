@@ -8,7 +8,11 @@ import Link from "next/link";
 import { Explain } from "./common/Explain";
 import "./button.css";
 
-export const Credential = () => {
+export const Credential = ({
+  setStep,
+}: {
+  setStep: (state: string) => void;
+}) => {
   const [credential, setCredential] = useState();
   const [claims, setClaims] = useState();
   const [isCompleteEncode, setIsCompleteEncode] = useState(false);
@@ -55,6 +59,7 @@ export const Credential = () => {
         credential={credential}
         isCompleteEncode={isCompleteEncode}
         claims={claims}
+        setStep={setStep}
       />
     </div>
   );
@@ -113,11 +118,13 @@ interface CredentialStep3Props {
   credential: string | undefined;
   isCompleteEncode: boolean;
   claims: string | undefined;
+  setStep: (state: string) => void;
 }
 export const CredentialStep3 = ({
   credential,
   isCompleteEncode,
   claims,
+  setStep,
 }: CredentialStep3Props) => {
   return (
     <>
@@ -151,7 +158,10 @@ export const CredentialStep3 = ({
             <br />
             이것이 바로 VC입니다.
           </p>
-          <Button className="blinking text-2xl font-bold bg-slate-700 mt-8">
+          <Button
+            className="blinking text-2xl font-bold bg-slate-700 mt-8"
+            onClick={() => setStep("holder")}
+          >
             ➔ NEXT STEP
           </Button>
         </>
