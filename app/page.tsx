@@ -1,14 +1,11 @@
-import MainContainer from "@/components/MainContainer";
-import { TestComponent } from "@/components/TestComponent";
+"use client";
+import { Credential } from "@/components/Credential";
+import { SdInstance } from "@/components/SdInstance";
 
 export default async function asyncHome() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <TestComponent>
-          <MainContainer />
-        </TestComponent>
-      </div>
+      <Credential />
     </main>
   );
 }
