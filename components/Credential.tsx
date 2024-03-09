@@ -56,16 +56,6 @@ export const Credential = () => {
         isCompleteEncode={isCompleteEncode}
         claims={claims}
       />
-      <p className="text-xl font-bold  mb-4">[ ✔️ ] Mission1 Complete !</p>
-      <p>
-        학교는 방금 재학 증명서를 발급을 완료했어요.
-        <br />
-        이것이 바로 VC입니다.
-      </p>
-
-      <Button className="blinking text-2xl font-bold bg-slate-700 mt-8">
-        ➔ NEXT STEP
-      </Button>
     </div>
   );
 };
@@ -154,6 +144,16 @@ export const CredentialStep3 = ({
             description="토큰을 받아 sd-jwt와 jwt 디버깅 사이트에서 decode 해보았어요.
       이처럼 우리가 흔히 알고있는 encode 함수를 돌리면 오른쪽처럼 프레임이 숨겨진 것을 볼 수 있어요."
           />
+
+          <p className="text-xl font-bold  mb-4">[ ✔️ ] Mission1 Complete !</p>
+          <p>
+            학교는 방금 재학 증명서를 발급을 완료했어요.
+            <br />
+            이것이 바로 VC입니다.
+          </p>
+          <Button className="blinking text-2xl font-bold bg-slate-700 mt-8">
+            ➔ NEXT STEP
+          </Button>
         </>
       )}
     </>
