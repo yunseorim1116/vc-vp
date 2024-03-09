@@ -7,6 +7,7 @@ import JsonFormatter from "react-json-formatter";
 import Link from "next/link";
 import { Explain } from "./common/Explain";
 import "./button.css";
+import { Chapter } from "./common/Chapter";
 
 export const Credential = ({
   setStep,
@@ -32,12 +33,11 @@ export const Credential = ({
 
   return (
     <div className="mt-16">
-      <h1 className="text-6xl font-bold pb-4 border-b-2 border-solid border-gray-200">
-        🏫 학교<span className="text-4xl font-bold"> (Issuer)</span>
-      </h1>
-      <h2 className="text-2xl font-bold pb-4 mt-4">
-        재학 증명서 발급해보기 (Credential)
-      </h2>
+      <Chapter
+        text="🏫 학교"
+        text2="(Issuer)"
+        desc="재학 증명서 발급해보기 (Credential)"
+      />
       <Explain description="토큰을 받아 sd-jwt와 jwt 디버깅 사이트에서서 decode 해보았어요." />
 
       <Button onClick={createCredential} className="mr-4 mb-8">

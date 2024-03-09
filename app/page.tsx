@@ -3,9 +3,9 @@
 import { Credential } from "@/components/Credential";
 import { Description } from "@/components/Description";
 import { Holder } from "@/components/Holder";
-import { Present } from "@/components/Present";
 import { Loading } from "@/components/common/Loading";
 import { useState } from "react";
+import { Verifier } from "@/components/Verifier";
 
 export default function asyncHome() {
   const [step, setStep] = useState("issue");
@@ -26,8 +26,8 @@ export default function asyncHome() {
         return <Credential setStep={handleNextStep} />;
       case "holder":
         return <Holder setStep={handleNextStep} />;
-      case "present":
-        return <Present setStep={handleNextStep} />;
+      case "verify":
+        return <Verifier setStep={handleNextStep} />;
       default:
         return null;
     }

@@ -2,7 +2,7 @@ import React from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const isMission1Complete = (step: string) =>
-  step === "holder" || step === "present";
+  step === "holder" || step === "verify";
 
 const isMission2Complete = (step: string) =>
   step !== "holder" && step !== "issue";
