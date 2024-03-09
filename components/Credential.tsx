@@ -6,6 +6,7 @@ import { sdDatas } from "@/datas/claims";
 import JsonFormatter from "react-json-formatter";
 import Link from "next/link";
 import { Explain } from "./common/Explain";
+import "./button.css";
 
 export const Credential = () => {
   const [credential, setCredential] = useState();
@@ -61,9 +62,10 @@ export const Credential = () => {
         <br />
         이것이 바로 VC입니다.
       </p>
-      <button className="animate-blink bg-blue-500 hover:animate-none hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-        다음 스텝으로
-      </button>
+
+      <Button className="blinking text-2xl font-bold bg-slate-700 mt-8">
+        ➔ NEXT STEP
+      </Button>
     </div>
   );
 };
@@ -149,7 +151,7 @@ export const CredentialStep3 = ({
             </div>
           </div>
           <Explain
-            description="토큰을 받아 sd-jwt와 jwt 디버깅 사이트에서서 decode 해보았어요.
+            description="토큰을 받아 sd-jwt와 jwt 디버깅 사이트에서 decode 해보았어요.
       이처럼 우리가 흔히 알고있는 encode 함수를 돌리면 오른쪽처럼 프레임이 숨겨진 것을 볼 수 있어요."
           />
         </>
