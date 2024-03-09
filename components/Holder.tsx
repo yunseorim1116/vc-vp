@@ -1,5 +1,6 @@
 "use client";
-
+import Image from "next/image";
+import "./button.css";
 import { Button } from "@/components/ui/button";
 import React from "react";
 

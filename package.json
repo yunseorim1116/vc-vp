@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-progress": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@sd-jwt/core": "0.3.2-next.103",
     "@sd-jwt/crypto-nodejs": "0.3.2-next.103",

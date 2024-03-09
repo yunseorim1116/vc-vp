@@ -33,3 +33,22 @@
     opacity: 1;
   }
 }
+
+.moving-image-container {
+  width: 100%;
+  height: 24px;
+}
+
+.moving-image {
+  right: 0;
+  animation: slideLeft 3s linear 1;
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(70%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
