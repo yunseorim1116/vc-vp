@@ -36,8 +36,8 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 ">
-      <div className="mt-20 w-[48rem]">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24  ">
+      <div className="mt-20 w-[48rem] main-container">
         <div className="flex justify-center items-center mb-8 pr-5">
           <Image
             src="/삼.png"
