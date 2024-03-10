@@ -9,7 +9,7 @@ import { Explain } from "./common/Explain";
 import "./button.css";
 import { Chapter } from "./common/Chapter";
 import { Content } from "./common/Content";
-import { Badge } from "@/components/ui/badge";
+import { Skip } from "./common/Skip";
 
 export const Credential = ({
   setStep,
@@ -19,6 +19,8 @@ export const Credential = ({
   const [credential, setCredential] = useState();
   const [claims, setClaims] = useState();
   const [isCompleteEncode, setIsCompleteEncode] = useState(false);
+
+  const STEP2 = credential && !isCompleteEncode;
 
   const createCredential = async () => {
     const { data } = await axios.get("http://localhost:3000/api/credential");
@@ -60,28 +62,8 @@ export const Credential = ({
       {/* step1 */}
       <CredentialStep1 credential={credential} />
 
-      {!credential && (
-        <>
-          <div className="flex justify-end">
-            <Badge
-              variant="secondary"
-              className="cursor-pointer p-2 mt-8"
-              onClick={() => setStep("holder")}
-            >
-              ➔ You Can Skip it!
-            </Badge>
-          </div>
-
-          <br />
-        </>
-      )}
-
       {/* step2 */}
-      <CredentialStep2
-        credential={credential}
-        isCompleteEncode={isCompleteEncode}
-        getClaims={getClaims}
-      />
+      <CredentialStep2 STEP2={STEP2} getClaims={getClaims} />
 
       {/* step3 */}
       <CredentialStep3
@@ -90,6 +72,8 @@ export const Credential = ({
         claims={claims}
         setStep={setStep}
       />
+
+      {!credential && <Skip setStep={setStep} />}
     </>
   );
 };
@@ -123,18 +107,13 @@ const CredentialStep1 = ({ credential }: CredentialStepProps) => (
   </>
 );
 interface CredentialStep2Props {
-  credential: string | undefined;
-  isCompleteEncode: boolean;
-  getClaims: () => void;
+  STEP2: boolean | undefined;
+  getClaims: () => Promise<void>;
 }
 
-const CredentialStep2 = ({
-  credential,
-  isCompleteEncode,
-  getClaims,
-}: CredentialStep2Props) => (
+const CredentialStep2 = ({ STEP2, getClaims }: CredentialStep2Props) => (
   <>
-    {credential && !isCompleteEncode && (
+    {STEP2 && (
       <Button onClick={getClaims} className="mb-8">
         토큰 풀어보기
       </Button>
