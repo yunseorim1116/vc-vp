@@ -74,7 +74,15 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
           <Content>
             <p className="text-gray-500 mb-4">증명서를 발급해주세요.</p>
           </Content>
-          <Skip setStep={setStep} status={VERIFY} />
+          <div className="flex justify-between">
+            <Button
+              className="blinking text-base font-bold bg-slate-700 mt-8 mr-8 "
+              onClick={() => setStep(ISSUE)}
+            >
+              ← PREV STEP
+            </Button>
+            <Skip setStep={setStep} status={VERIFY} />
+          </div>
         </>
       )}
 

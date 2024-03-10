@@ -80,7 +80,11 @@ export const Credential = ({
         setStep={setStep}
       />
 
-      {!credential && <Skip setStep={setStep} status={HOLDER} />}
+      {!credential && (
+        <div className="flex justify-end">
+          <Skip setStep={setStep} status={HOLDER} />
+        </div>
+      )}
     </>
   );
 };

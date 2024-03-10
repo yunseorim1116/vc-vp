@@ -9,18 +9,12 @@ export const Skip = ({
   status: string;
 }) => {
   return (
-    <>
-      <div className="flex justify-end">
-        <Badge
-          variant="secondary"
-          className="cursor-pointer p-2 mt-8"
-          onClick={() => setStep(status)}
-        >
-          ➔ You Can Skip it!
-        </Badge>
-      </div>
-
-      <br />
-    </>
+    <Badge
+      variant="secondary"
+      className="cursor-pointer p-2 mt-8"
+      onClick={() => setStep(status)}
+    >
+      ➔ You Can Skip it!
+    </Badge>
   );
 };
