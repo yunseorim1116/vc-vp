@@ -27,7 +27,10 @@ export const Credential = ({
   };
 
   const getClaims = async () => {
-    const { data } = await axios.get("http://localhost:3000/api/encode");
+    const { data } = await axios.post("http://localhost:3000/api/encode", {
+      credential,
+    });
+
     const claims = data.claims;
     setClaims(claims);
     setIsCompleteEncode(true);
@@ -41,8 +44,10 @@ export const Credential = ({
         desc="재학 증명서 발급해보기 (Credential)"
       />
 
-      <Explain description="우리는 학교측에 대학 증명서를 발급해달라 요청했어요. 이제 학교(Issuer) 는 증명서를 발급할거예요." />
-
+      <Explain
+        description="우리는 학교측에 대학 증명서를 발급해달라 요청했어요. 이제 학교(Issuer) 는 증명서를 발급할거예요. 
+      학교측은 [ firstname, id, ssn ] 에 대해 드러낼 수 있는지, 없는지를 허락해줬다고 가정할게요."
+      />
       <Button
         onClick={createCredential}
         className={`mr-4 mb-8 ${credential ? "" : "blinking"}`}
@@ -77,6 +82,7 @@ export const Credential = ({
         isCompleteEncode={isCompleteEncode}
         getClaims={getClaims}
       />
+
       {/* step3 */}
       <CredentialStep3
         credential={credential}
@@ -181,7 +187,8 @@ export const CredentialStep3 = ({
 
           <Explain
             description="토큰을 받아 sd-jwt와 jwt 디버깅 사이트에서 decode 해보았어요.
-      이처럼 우리가 흔히 알고있는 encode 함수를 돌리면 오른쪽처럼 프레임이 숨겨진 것을 볼 수 있어요."
+      이처럼 우리가 흔히 알고있는 encode 함수를 돌리면 오른쪽처럼 프레임이 숨겨진 것을 볼 수 있어요. 왼쪽 encode 상태를 보면 원본 객체가 그대로 드러나고 있어요. 
+      중요한 것은 우리는 숨길 수 있다고 명시한 것 뿐이지, 완전히 숨긴 것은 아니에요."
           />
 
           <p className="text-xl font-bold  mb-4">[ ✔️ ] Mission1 Complete !</p>
