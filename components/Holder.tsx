@@ -65,9 +65,13 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
       )}
 
       {claims && (
-        <Content>
-          <JsonFormatter json={claims} tabWith={5} jsonStyle={jsonStyle} />
-        </Content>
+        <>
+          <Content>
+            <JsonFormatter json={claims} tabWith={5} jsonStyle={jsonStyle} />
+          </Content>
+          <Explain description="present 함수를 사용해 공개하고 싶은 정보만 조합해서 증명서를 만들었어요! 이걸 VP라고 할게요. 이제 과외 플랫폼에게 제출할 일만 남았어요." />
+          <p className="text-xl font-bold  mb-4">[ ✔️ ] Mission2 Complete !</p>
+        </>
       )}
 
       <div>
@@ -81,7 +85,7 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
           className="blinking text-2xl font-bold bg-slate-700 mt-8"
           onClick={() => setStep(VERIFY)}
         >
-          ➔ NEXT STEP
+          ➔ Go To Submit
         </Button>
       </div>
     </div>
