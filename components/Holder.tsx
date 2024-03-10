@@ -18,16 +18,21 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
   const [claims, setClaims] = useState(); //content
 
   const createPresent = async () => {
-    const { data } = await axios.get("http://localhost:3000/api/present");
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_RUN_MODE}/api/present`
+    );
 
     const { presentation } = data;
     setPresent(presentation);
   };
 
   const getClaims = async () => {
-    const { data } = await axios.post("http://localhost:3000/api/encode", {
-      token: presetation,
-    });
+    const { data } = await axios.post(
+      `${process.env.NEXT_PUBLIC_RUN_MODE}/api/encode`,
+      {
+        token: presetation,
+      }
+    );
 
     const claims = data.claims;
     setClaims(claims);
@@ -63,7 +68,7 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
           <Content>{presetation}</Content>
           <Explain
             description="present 함수를 실행시키면 VC 기반으로 VP가 발급 돼요. 
-          present 함수를 실행시킬때 공개고 싶은 정보를 내가 직접 정했어요. 토큰을 풀어볼까요?"
+          present 함수를 실행시킬때 공개히고 싶은 정보를 내가 직접 정했어요. 토큰을 풀어볼까요?"
           />
           <Button onClick={getClaims} className="mb-8">
             토큰 풀어보기 (get Claims)

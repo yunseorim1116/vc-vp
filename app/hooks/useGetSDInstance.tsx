@@ -5,9 +5,12 @@ import { useQuery } from "@tanstack/react-query";
 
 export const getCredential = async () => {
   try {
-    const res = await axios.get("http://localhost:3000/api/credential", {
-      headers: { method: "GET" },
-    });
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_RUN_MODE}/api/credential`,
+      {
+        headers: { method: "GET" },
+      }
+    );
     return res.data;
   } catch (err) {
     throw err;
