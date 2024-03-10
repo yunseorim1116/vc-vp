@@ -75,9 +75,9 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 808px) {
   .main-container {
-    width: calc(100vw - 60px);
+    width: calc(100vw - 40px);
     padding: 20px;
   }
 }
