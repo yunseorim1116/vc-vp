@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,7 @@ import { Content } from "./common/Content";
 import { Skip } from "./common/Skip";
 import { jsonStyle } from "@/const/style";
 import { HOLDER } from "@/const/status";
+import { DialogDemo } from "./common/DialogDemo";
 
 export const Credential = ({
   setStep,
@@ -59,7 +61,7 @@ export const Credential = ({
         발급하기 (issue)
       </Button>
 
-      <Button>issue 코드보기</Button>
+      <DialogDemo>test</DialogDemo>
 
       {/* step1 */}
       <CredentialStep1 credential={credential} />
