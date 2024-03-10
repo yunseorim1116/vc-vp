@@ -74,9 +74,6 @@
     @apply bg-background text-foreground;
   }
 }
-.main-container {
-  width: 100%;
-}
 
 @media screen and (max-width: 768px) {
   .main-container {
