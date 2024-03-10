@@ -7,7 +7,7 @@ import Header from "@/components/layout/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Create Next App",
+  title: "Study Issuer / Holder / Verifier Concept",
   description: "let's start to use sd-jwt ",
   icons: {
     icon: "/Brand_B.svg",
