@@ -9,7 +9,7 @@ import { Verifier } from "@/components/Verifier";
 import Image from "next/image";
 import { ISSUE, HOLDER, VERIFY } from "@/const/status";
 
-export default function asyncHome() {
+export default function Home() {
   const [step, setStep] = useState(ISSUE);
   const [loading, setLoading] = useState(false);
 
