@@ -15,13 +15,10 @@ export const DialogDemo = ({ children }: any) => {
       <DialogTrigger asChild>
         <Button variant="outline">코드 보기</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[750px]">
         <DialogHeader>
           <DialogTitle>CODE</DialogTitle>
-          <DialogDescription>
-            요기에 코드를 띄울거애오
-            {children}
-          </DialogDescription>
+          <DialogDescription>{children}</DialogDescription>
         </DialogHeader>
       </DialogContent>
     </Dialog>

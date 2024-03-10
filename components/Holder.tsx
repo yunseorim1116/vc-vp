@@ -9,9 +9,10 @@ import axios from "axios";
 import { Content } from "./common/Content";
 import JsonFormatter from "react-json-formatter";
 import { jsonStyle } from "@/const/style";
-import { ISSUE, VERIFY, HOLDER } from "@/const/status";
+import { ISSUE, VERIFY } from "@/const/status";
 import { Skip } from "./common/Skip";
-
+import PresentaionCode from "@/components/mdx/presentaion.mdx";
+import { DialogDemo } from "./common/DialogDemo";
 export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
   const [presetation, setPresent] = useState(); //token
   const [claims, setClaims] = useState(); //content
@@ -51,7 +52,10 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
       >
         발급하기 (present)
       </Button>
-      <Button>present 코드보기</Button>
+
+      <DialogDemo>
+        <PresentaionCode />
+      </DialogDemo>
       <br />
 
       {presetation ? (

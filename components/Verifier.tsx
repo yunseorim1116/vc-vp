@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { HOLDER } from "@/const/status";
 import { Chapter } from "./common/Chapter";
 import { Explain } from "./common/Explain";
+import VerifyerCode from "@/components/mdx/verifyer.mdx";
+import { DialogDemo } from "./common/DialogDemo";
 
 export const Verifier = ({ setStep }: { setStep: (state: string) => void }) => {
   const verifyPresent = async () => {};
@@ -19,7 +21,9 @@ export const Verifier = ({ setStep }: { setStep: (state: string) => void }) => {
       <Button onClick={verifyPresent} className={`mr-4 mb-8 `}>
         입증하기 (verify)
       </Button>
-      <Button className={`mr-4 mb-8 `}>코드보기</Button>
+      <DialogDemo>
+        <VerifyerCode />
+      </DialogDemo>
       <br />
 
       <Button

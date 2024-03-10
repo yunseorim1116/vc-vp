@@ -14,6 +14,7 @@ import { Skip } from "./common/Skip";
 import { jsonStyle } from "@/const/style";
 import { HOLDER } from "@/const/status";
 import { DialogDemo } from "./common/DialogDemo";
+import CredentialCode from "@/components/mdx/credential.mdx";
 
 export const Credential = ({
   setStep,
@@ -61,7 +62,9 @@ export const Credential = ({
         발급하기 (issue)
       </Button>
 
-      <DialogDemo>test</DialogDemo>
+      <DialogDemo>
+        <CredentialCode />
+      </DialogDemo>
 
       {/* step1 */}
       <CredentialStep1 credential={credential} />

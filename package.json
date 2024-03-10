@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@next/mdx": "^14.1.3",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-progress": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
@@ -16,9 +19,11 @@
     "@sd-jwt/crypto-nodejs": "0.3.2-next.103",
     "@sd-jwt/decode": "0.3.2-next.103",
     "@tanstack/react-query": "^5.25.0",
+    "@types/mdx": "^2.0.11",
     "axios": "^1.6.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "highlight.js": "^11.9.0",
     "install": "^0.13.0",
     "lucide-react": "^0.353.0",
     "next": "14.1.3",
@@ -26,6 +31,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-json-formatter": "^0.4.0",
+    "rehype-highlight": "^7.0.0",
+    "tailwind-highlightjs": "^2.0.1",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"
   },
