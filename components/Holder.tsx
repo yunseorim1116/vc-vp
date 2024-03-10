@@ -10,9 +10,10 @@ import { Content } from "./common/Content";
 import JsonFormatter from "react-json-formatter";
 import { jsonStyle } from "@/const/style";
 import { ISSUE, VERIFY, HOLDER } from "@/const/status";
+import { Skip } from "./common/Skip";
 
 export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
-  const [preset, setPresent] = useState(); //token
+  const [presetation, setPresent] = useState(); //token
   const [claims, setClaims] = useState(); //content
 
   const createPresent = async () => {
@@ -24,7 +25,7 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
 
   const getClaims = async () => {
     const { data } = await axios.post("http://localhost:3000/api/encode", {
-      token: preset,
+      token: presetation,
     });
 
     const claims = data.claims;
@@ -44,24 +45,33 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
       VC에 공개된 정보 중 공개하고 싶은 것만 내가 스스로 선택해서 과외 플랫폼에 제출할래요. VC를 이용해서 우리는 이제 VP를 만들거예요.
       생각해보니 firstname 과 id는 공개해도 될 것 같아요. ssn은 여전히 공개하고 싶지 않아요."
       />
-      <Button onClick={createPresent} className="mr-4 mb-8">
+      <Button
+        onClick={createPresent}
+        className={`mr-4 mb-8 ${presetation ? "" : "blinking"}`}
+      >
         발급하기 (present)
       </Button>
       <Button>present 코드보기</Button>
       <br />
 
-      {preset ? (
+      {presetation ? (
         <>
-          <Content>{preset}</Content>
-          <Explain description="present 함수를 실행시키면 VC 기반으로 VP가 발급 돼요. 토큰을 풀어볼까요?" />
+          <Content>{presetation}</Content>
+          <Explain
+            description="present 함수를 실행시키면 VC 기반으로 VP가 발급 돼요. 
+          present 함수를 실행시킬때 공개고 싶은 정보를 내가 직접 정했어요. 토큰을 풀어볼까요?"
+          />
           <Button onClick={getClaims} className="mb-8">
             토큰 풀어보기 (get Claims)
           </Button>
         </>
       ) : (
-        <Content>
-          <p className="text-gray-500 mb-4">증명서를 발급해주세요.</p>
-        </Content>
+        <>
+          <Content>
+            <p className="text-gray-500 mb-4">증명서를 발급해주세요.</p>
+          </Content>
+          <Skip setStep={setStep} status={VERIFY} />
+        </>
       )}
 
       {claims && (
@@ -69,25 +79,25 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
           <Content>
             <JsonFormatter json={claims} tabWith={5} jsonStyle={jsonStyle} />
           </Content>
-          <Explain description="present 함수를 사용해 공개하고 싶은 정보만 조합해서 증명서를 만들었어요! 이걸 VP라고 할게요. 이제 과외 플랫폼에게 제출할 일만 남았어요." />
+          <Explain description="present 함수를 사용해 공개하고 싶은 정보만을 조합해서 증명서를 만들었어요! 이걸 VP라고 할게요. 이제 과외 플랫폼에게 제출할 일만 남았어요." />
           <p className="text-xl font-bold  mb-4">[ ✔️ ] Mission2 Complete !</p>
+
+          <div>
+            <Button
+              className="blinking text-base font-bold bg-slate-700 mt-8 mr-8 "
+              onClick={() => setStep(ISSUE)}
+            >
+              ← PREV STEP
+            </Button>
+            <Button
+              className="blinking text-base font-bold bg-slate-700 mt-8"
+              onClick={() => setStep(VERIFY)}
+            >
+              Go To Submit ➔
+            </Button>
+          </div>
         </>
       )}
-
-      <div>
-        <Button
-          className="blinking text-2xl font-bold bg-slate-700 mt-8 mr-8"
-          onClick={() => setStep(ISSUE)}
-        >
-          ← PREV STEP
-        </Button>
-        <Button
-          className="blinking text-2xl font-bold bg-slate-700 mt-8"
-          onClick={() => setStep(VERIFY)}
-        >
-          ➔ Go To Submit
-        </Button>
-      </div>
     </div>
   );
 };

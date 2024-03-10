@@ -23,6 +23,8 @@ export const presentedClaims = {
 export const disclosureFrame: DisclosureFrame<typeof claims> = {
   _sd: ["firstname", "id", "ssn"],
 };
+export const presentationFrame = ["firstname", "id"];
+export const requiredClaims = ["firstname"];
 
 export const encodedClaims = `{
   "lastname": "Doe",

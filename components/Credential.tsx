@@ -75,7 +75,7 @@ export const Credential = ({
         setStep={setStep}
       />
 
-      {!credential && <Skip setStep={setStep} />}
+      {!credential && <Skip setStep={setStep} status={HOLDER} />}
     </>
   );
 };

@@ -1,15 +1,20 @@
 import React from "react";
 import { Badge } from "@/components/ui/badge";
-import { HOLDER } from "@/const/status";
 
-export const Skip = ({ setStep }: { setStep: (state: string) => void }) => {
+export const Skip = ({
+  setStep,
+  status,
+}: {
+  setStep: (state: string) => void;
+  status: string;
+}) => {
   return (
     <>
       <div className="flex justify-end">
         <Badge
           variant="secondary"
           className="cursor-pointer p-2 mt-8"
-          onClick={() => setStep(HOLDER)}
+          onClick={() => setStep(status)}
         >
           ➔ You Can Skip it!
         </Badge>
