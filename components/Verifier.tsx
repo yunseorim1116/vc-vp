@@ -31,7 +31,10 @@ export const Verifier = ({ setStep }: { setStep: (state: string) => void }) => {
         desc="자격증 정보 입증하기"
       />
       <br />
-      <Explain description="VP를 만들어서 과외플랫폼에 제출했어요. 이제 플랫폼은 이 증명서를 입증해야 해요. 서명이 변경되거나 VP가 조작된 것이라면 분명 문제가 생기겠죠." />
+      <Explain
+        description="VP를 만들어서 과외플랫폼에 제출했어요. 이제 플랫폼은 이 증명서를 입증해야 해요. 
+      서명이 변경되거나 VP가 조작된 것이라면 분명 문제가 생기겠죠. 과외 플랫폼은 이제 VP를 인증할거예요."
+      />
       <Button
         onClick={verifyPresent}
         className={`mr-4 mb-8 ${verify ? "" : "blinking"}`}
