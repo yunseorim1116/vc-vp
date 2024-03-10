@@ -28,20 +28,15 @@ export const Credential = ({
   const STEP2 = credential && !isCompleteEncode;
 
   const createCredential = async () => {
-    const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_RUN_MODE}/api/credential`
-    );
+    const { data } = await axios.get(`/api/credential`);
     const credential = data.credential;
     setCredential(credential);
   };
 
   const getClaims = async () => {
-    const { data } = await axios.post(
-      `${process.env.NEXT_PUBLIC_RUN_MODE}/api/encode`,
-      {
-        token: credential,
-      }
-    );
+    const { data } = await axios.post(`/api/encode`, {
+      token: credential,
+    });
 
     const claims = data.claims;
     setClaims(claims);

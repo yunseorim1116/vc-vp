@@ -18,21 +18,16 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
   const [claims, setClaims] = useState(); //content
 
   const createPresent = async () => {
-    const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_RUN_MODE}/api/present`
-    );
+    const { data } = await axios.get(`/api/present`);
 
     const { presentation } = data;
     setPresent(presentation);
   };
 
   const getClaims = async () => {
-    const { data } = await axios.post(
-      `${process.env.NEXT_PUBLIC_RUN_MODE}/api/encode`,
-      {
-        token: presetation,
-      }
-    );
+    const { data } = await axios.post(`/api/encode`, {
+      token: presetation,
+    });
 
     const claims = data.claims;
     setClaims(claims);
