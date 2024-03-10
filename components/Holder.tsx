@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+
 import "./button.css";
 import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
@@ -7,9 +7,13 @@ import { Chapter } from "./common/Chapter";
 import { Explain } from "./common/Explain";
 import axios from "axios";
 import { Content } from "./common/Content";
+import JsonFormatter from "react-json-formatter";
+import { jsonStyle } from "@/const/style";
+import { ISSUE, VERIFY, HOLDER } from "@/const/status";
 
 export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
-  const [preset, setPresent] = useState();
+  const [preset, setPresent] = useState(); //token
+  const [claims, setClaims] = useState(); //content
 
   const createPresent = async () => {
     const { data } = await axios.get("http://localhost:3000/api/present");
@@ -17,6 +21,16 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
     const { presentation } = data;
     setPresent(presentation);
   };
+
+  const getClaims = async () => {
+    const { data } = await axios.post("http://localhost:3000/api/encode", {
+      token: preset,
+    });
+
+    const claims = data.claims;
+    setClaims(claims);
+  };
+
   return (
     <div>
       <Chapter
@@ -40,7 +54,9 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
         <>
           <Content>{preset}</Content>
           <Explain description="present 함수를 실행시키면 VC 기반으로 VP가 발급 돼요. 토큰을 풀어볼까요?" />
-          <Button> 토큰 풀어보기</Button>
+          <Button onClick={getClaims} className="mb-8">
+            토큰 풀어보기 (get Claims)
+          </Button>
         </>
       ) : (
         <Content>
@@ -48,16 +64,22 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
         </Content>
       )}
 
+      {claims && (
+        <Content>
+          <JsonFormatter json={claims} tabWith={5} jsonStyle={jsonStyle} />
+        </Content>
+      )}
+
       <div>
         <Button
           className="blinking text-2xl font-bold bg-slate-700 mt-8 mr-8"
-          onClick={() => setStep("issue")}
+          onClick={() => setStep(ISSUE)}
         >
           ← PREV STEP
         </Button>
         <Button
           className="blinking text-2xl font-bold bg-slate-700 mt-8"
-          onClick={() => setStep("verify")}
+          onClick={() => setStep(VERIFY)}
         >
           ➔ NEXT STEP
         </Button>

@@ -10,14 +10,16 @@ import "./button.css";
 import { Chapter } from "./common/Chapter";
 import { Content } from "./common/Content";
 import { Skip } from "./common/Skip";
+import { jsonStyle } from "@/const/style";
+import { HOLDER } from "@/const/status";
 
 export const Credential = ({
   setStep,
 }: {
   setStep: (state: string) => void;
 }) => {
-  const [credential, setCredential] = useState();
-  const [claims, setClaims] = useState();
+  const [credential, setCredential] = useState(); //token
+  const [claims, setClaims] = useState(); //content
   const [isCompleteEncode, setIsCompleteEncode] = useState(false);
 
   const STEP2 = credential && !isCompleteEncode;
@@ -30,7 +32,7 @@ export const Credential = ({
 
   const getClaims = async () => {
     const { data } = await axios.post("http://localhost:3000/api/encode", {
-      credential,
+      token: credential,
     });
 
     const claims = data.claims;
@@ -78,12 +80,6 @@ export const Credential = ({
   );
 };
 
-const jsonStyle = {
-  propertyStyle: { color: "rgb(255 50 104)" },
-  stringStyle: { color: "#0295d0" },
-  numberStyle: { color: "darkorange" },
-};
-
 interface CredentialStepProps {
   credential: string | undefined;
 }
@@ -115,7 +111,7 @@ const CredentialStep2 = ({ STEP2, getClaims }: CredentialStep2Props) => (
   <>
     {STEP2 && (
       <Button onClick={getClaims} className="mb-8">
-        토큰 풀어보기
+        토큰 풀어보기 (get Claims)
       </Button>
     )}
   </>
@@ -178,7 +174,7 @@ export const CredentialStep3 = ({
           </p>
           <Button
             className="blinking text-2xl font-bold bg-slate-700 mt-8"
-            onClick={() => setStep("holder")}
+            onClick={() => setStep(HOLDER)}
           >
             ➔ NEXT STEP
           </Button>

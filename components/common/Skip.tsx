@@ -1,5 +1,6 @@
 import React from "react";
 import { Badge } from "@/components/ui/badge";
+import { HOLDER } from "@/const/status";
 
 export const Skip = ({ setStep }: { setStep: (state: string) => void }) => {
   return (
@@ -8,7 +9,7 @@ export const Skip = ({ setStep }: { setStep: (state: string) => void }) => {
         <Badge
           variant="secondary"
           className="cursor-pointer p-2 mt-8"
-          onClick={() => setStep("holder")}
+          onClick={() => setStep(HOLDER)}
         >
           ➔ You Can Skip it!
         </Badge>

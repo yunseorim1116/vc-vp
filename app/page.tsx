@@ -7,10 +7,24 @@ import { Loading } from "@/components/common/Loading";
 import { useState } from "react";
 import { Verifier } from "@/components/Verifier";
 import Image from "next/image";
+import { ISSUE, HOLDER, VERIFY } from "@/const/status";
 
 export default function asyncHome() {
-  const [step, setStep] = useState("issue");
+  const [step, setStep] = useState(ISSUE);
   const [loading, setLoading] = useState(false);
+
+  const renderStepComponent = () => {
+    switch (step) {
+      case ISSUE:
+        return <Credential setStep={handleNextStep} />;
+      case HOLDER:
+        return <Holder setStep={handleNextStep} />;
+      case VERIFY:
+        return <Verifier setStep={handleNextStep} />;
+      default:
+        return null;
+    }
+  };
 
   const handleNextStep = (step: string) => {
     setLoading(true);
@@ -19,19 +33,6 @@ export default function asyncHome() {
       setLoading(false);
       setStep(step);
     }, 1000);
-  };
-
-  const renderStepComponent = () => {
-    switch (step) {
-      case "issue":
-        return <Credential setStep={handleNextStep} />;
-      case "holder":
-        return <Holder setStep={handleNextStep} />;
-      case "verify":
-        return <Verifier setStep={handleNextStep} />;
-      default:
-        return null;
-    }
   };
 
   return (

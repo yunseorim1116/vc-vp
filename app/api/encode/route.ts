@@ -2,8 +2,10 @@ import { initializeJwtInstance } from "@/app/jwtModule";
 
 export const POST = async (req: Request) => {
   const sdjwt = await initializeJwtInstance();
-  const { credential } = await req.json();
-  const claims = await sdjwt.getClaims(credential);
+  const { token } = await req.json();
+  console.log(token);
+  const claims = await sdjwt.getClaims(token);
+  console.log(claims);
 
   return Response.json({ claims });
 };

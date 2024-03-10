@@ -1,11 +1,9 @@
 import React from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Content } from "next/font/google";
-const isMission1Complete = (step: string) =>
-  step === "holder" || step === "verify";
+import { ISSUE, VERIFY, HOLDER } from "@/const/status";
 
-const isMission2Complete = (step: string) =>
-  step !== "holder" && step !== "issue";
+const isMission1Complete = (step: string) => step === HOLDER || step === VERIFY;
+const isMission2Complete = (step: string) => step !== HOLDER && step !== ISSUE;
 
 export const Description = ({ step }: { step: string }) => {
   return (
