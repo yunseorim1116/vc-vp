@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { HOLDER } from "@/const/status";
@@ -9,11 +10,14 @@ import { DialogDemo } from "./common/DialogDemo";
 import { useToast } from "@/components/ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";
 import { Badge } from "@/components/ui/badge";
+import Script from "next/script";
+import JSConfetti from "js-confetti";
 
 export const Verifier = ({ setStep }: { setStep: (state: string) => void }) => {
   const [verify, setVerify] = useState(false);
   const { toast } = useToast();
   const formattedDate = new Date().toLocaleString();
+  const jsConfetti = new JSConfetti();
 
   const verifyPresent = async () => {
     setVerify(true);
@@ -50,6 +54,11 @@ export const Verifier = ({ setStep }: { setStep: (state: string) => void }) => {
 
       {verify && (
         <>
+          <Script
+            src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"
+            strategy="lazyOnload"
+            onLoad={() => jsConfetti.addConfetti()}
+          />
           <Badge variant="destructive" className="text-xl">
             인증 완
           </Badge>
