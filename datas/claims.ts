@@ -1,30 +1,32 @@
-import { DisclosureFrame } from "@sd-jwt/types";
+import { DisclosureFrame, PresentationFrame } from '@sd-jwt/types';
 
+// This is the original claims that issuer issue.
 export const claims = {
-  //원본 클레임
-  firstname: "John",
-  id: "1234",
-  lastname: "Doe",
-  ssn: "123-45-6789",
+  name: 'John Deo',
+  studentId: '22109538',
+  university: 'S University',
+  department: 'Computer Science',
 };
 
 export const presentedClaims = {
-  firstname: "John",
-  id: "1234",
-  lastname: "Doe",
-  ssn: "123-45-6789",
+  firstname: 'John',
+  id: '1234',
+  lastname: 'Doe',
+  ssn: '123-45-6789',
   data: {
-    firstname: "John",
-    lastname: "Doe",
-    ssn: "123-45-6789",
+    firstname: 'John',
+    lastname: 'Doe',
+    ssn: '123-45-6789',
   },
 };
 
 export const disclosureFrame: DisclosureFrame<typeof claims> = {
-  _sd: ["firstname", "id", "ssn"],
+  _sd: ['name', 'studentId', 'department'],
 };
-export const presentationFrame = ["firstname", "id"];
-export const requiredClaims = ["firstname"];
+export const presentationFrame: PresentationFrame<typeof claims> = {
+  name: true,
+};
+export const requiredClaims = ['name'];
 
 export const encodedClaims = `{
   "lastname": "Doe",
@@ -49,11 +51,11 @@ export const encodedClaims = `{
 }`;
 
 export const sdDatas = `{
-  "lastname": "Doe",
+  "university": "S University",
   "_sd": [
-    "-vMBLfnS56ykhazsvM2SRBFsJbAC3IehUJhCjGzmEFg",
-    "4IeDimKZ_UDOJQih1ggSFvhQeStBXSXABsewHEqMHZw",
-    "8bWqcjSohZU3Qtnx9g43nmZ7SDtceG1Iq5gB51Tvzqo"
+    "0uDMKIRkX8-VU6GDPRVWoHxyeC_OgvXwXRaE9k6sq1o",
+    "It91bTa5vtwVixQOYIhAHZ_OIpklmhXwtgLZdc4Chzk",
+    "pdZa5eD4PAFzGN01r9lNHD8VKbQX0DeA8l2AXdYEmPM"
   ],
   "_sd_alg": "SHA-256"
 }`;
