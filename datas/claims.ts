@@ -1,32 +1,32 @@
-import { DisclosureFrame, PresentationFrame } from '@sd-jwt/types';
+import { DisclosureFrame, PresentationFrame } from "@sd-jwt/types";
 
 // This is the original claims that issuer issue.
 export const claims = {
-  name: 'John Deo',
-  studentId: '22109538',
-  university: 'S University',
-  department: 'Computer Science',
+  name: "John Deo",
+  studentId: "22109538",
+  university: "S University",
+  department: "Computer Science",
 };
 
 export const presentedClaims = {
-  firstname: 'John',
-  id: '1234',
-  lastname: 'Doe',
-  ssn: '123-45-6789',
+  firstname: "John",
+  id: "1234",
+  lastname: "Doe",
+  ssn: "123-45-6789",
   data: {
-    firstname: 'John',
-    lastname: 'Doe',
-    ssn: '123-45-6789',
+    firstname: "John",
+    lastname: "Doe",
+    ssn: "123-45-6789",
   },
 };
 
 export const disclosureFrame: DisclosureFrame<typeof claims> = {
-  _sd: ['name', 'studentId', 'department'],
+  _sd: ["name", "studentId", "department"],
 };
 export const presentationFrame: PresentationFrame<typeof claims> = {
   name: true,
 };
-export const requiredClaims = ['name'];
+export const requiredClaims = ["name"];
 
 export const encodedClaims = `{
   "lastname": "Doe",
