@@ -16,13 +16,13 @@ export const Description = ({ step }: { step: string }) => {
         <br />
         <p>
           <span className="font-bold">
-            {isMission1Complete(step) ? "[ ✔️ ]" : "[ ]"} Mssion1 :
+            {isMission1Complete(step) ? "[ ✔️ ]" : "[ ]"} Mission :
           </span>
           나는 학교를 상대로 재학 증명서를 받아내야 합니다.
         </p>
         <p>
           <span className="font-bold">
-            {isMission2Complete(step) ? "[ ✔️ ]" : "[  ]"} Mssion2 :
+            {isMission2Complete(step) ? "[ ✔️ ]" : "[  ]"} Mission :
           </span>
           받은 재학 증명서를 과외 플랫폼에 제출해야 합니다.
         </p>
