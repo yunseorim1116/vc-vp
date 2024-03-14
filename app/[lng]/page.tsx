@@ -9,6 +9,7 @@ import { Verifier } from "@/components/Verifier";
 import Image from "next/image";
 import { ISSUE, HOLDER, VERIFY } from "@/const/status";
 import { useTranslation } from "../i18n/client";
+import { FooterBase } from "./components/Footer/FooterBase";
 
 export default function Home({ params: { lng } }: { params: { lng: string } }) {
   const { t } = useTranslation(lng);
@@ -41,7 +42,6 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24  ">
       <div className="mt-20 w-[48rem] main-container">
-        <h1>{t("title")}</h1>
         <div className="flex justify-center items-center mb-8 pr-5">
           <Image
             src="/삼.png"
@@ -54,6 +54,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
         <Description step={step} lng={lng} />
         {loading ? <Loading /> : <>{renderStepComponent()}</>}
       </div>
+      <FooterBase t={t} lng={lng} />
     </main>
   );
 }
