@@ -1,30 +1,32 @@
 import React from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ISSUE, VERIFY, HOLDER } from "@/const/status";
+import { useTranslation } from "@/app/i18n/client";
 
 const isMission1Complete = (step: string) => step === HOLDER || step === VERIFY;
 const isMission2Complete = (step: string) => step !== HOLDER && step !== ISSUE;
 
-export const Description = ({ step }: { step: string }) => {
+export const Description = ({ step, lng }: { step: string; lng: string }) => {
+  const { t } = useTranslation(lng);
+
   return (
     <Alert className="bg-slate-50">
-      <AlertTitle className="text-2xl font-bold">📜 시나리오</AlertTitle>
+      <AlertTitle className="text-2xl font-bold">📜 Scenarios</AlertTitle>
       <AlertDescription className="text-base mt-4">
-        나는 S대에 재학하는 학생입니다. 용돈이 부족해서 과외 플랫폼을 통해
-        과외를 구하기로 했습니다.
+        {t("description")}
         <br />
         <br />
         <p>
           <span className="font-bold">
-            {isMission1Complete(step) ? '[ ✔️ ]' : '[ ]'} Mission:
+            {isMission1Complete(step) ? "[ ✔️ ]" : "[ ]"} Mission:
           </span>
-          {' 나는 학교를 상대로 재학 증명서를 받아내야 합니다.'}
+          {t("mission1")}
         </p>
         <p>
           <span className="font-bold">
-            {isMission2Complete(step) ? '[ ✔️ ]' : '[  ]'} Mission:
+            {isMission2Complete(step) ? "[ ✔️ ]" : "[  ]"} Mission:
           </span>
-          {' 받은 재학 증명서를 과외 플랫폼에 제출해야 합니다.'}
+          {t("mission2")}
         </p>
       </AlertDescription>
     </Alert>

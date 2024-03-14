@@ -17,6 +17,7 @@
   "letsIssue": "issue",
   "chapter1": "Issue a certificate of enrollment",
   "me": "👩‍💻 Me",
+  "plzIssueCredential": "Please issue a credential",
   "disclosure": "Reveal only the information you need",
   "issuePresent": "My school has issued me a verification of enrollment (VC), but there is some information I don't want to make public. I'm going to self-select the information disclosed in the VC that I want to make public and submit it to the tutoring platform. Using the VC, we will now create a VP. Now that I think about it, I think it's okay to disclose my name, but I still don't want to disclose the other information.",
   "present": "present",
