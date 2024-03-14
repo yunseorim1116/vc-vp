@@ -64,7 +64,7 @@ export const Verifier = ({ setStep }: { setStep: (state: string) => void }) => {
           </Badge>
           <Explain description="입증이 완료 되었어요! 플랫폼 측에서는 필요로 하는 요소(requiredClaims)을 넣고 조작된 토큰인지 아닌지를 검증해요. 모든 스텝을 완료했습니다. 축하합니다!" />
           <Button
-            className="blinking text-base font-bold bg-slate-700 mt-8"
+            className="text-base font-bold bg-slate-700 mt-8"
             onClick={() => setStep(HOLDER)}
           >
             ← PREV STEP

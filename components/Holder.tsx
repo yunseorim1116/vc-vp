@@ -44,7 +44,7 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
       <Explain
         description="학교측에서 재학증명서(VC) 를 발급해줬어요! 하지만 공개하고 싶지 않은 정보들이 있어요. 
       VC에 공개된 정보 중 공개하고 싶은 것만 내가 스스로 선택해서 과외 플랫폼에 제출할래요. VC를 이용해서 우리는 이제 VP를 만들거예요.
-      생각해보니 name은 공개해도 될 것 같아요. 다른 정보는 여전히 공개하고 싶지 않아요."
+      생각해보니 이름(name)은 공개해도 될 것 같아요. 다른 정보는 여전히 공개하고 싶지 않아요."
       />
       <Button
         onClick={createPresent}
@@ -65,7 +65,7 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
             description="present 함수를 실행시키면 VC 기반으로 VP가 발급 돼요. 
           present 함수를 실행시킬때 공개히고 싶은 정보를 내가 직접 정했어요. 토큰을 풀어볼까요?"
           />
-          <Button onClick={getClaims} className="mb-8">
+          <Button onClick={getClaims} className="blinking mb-8">
             토큰 풀어보기 (get Claims)
           </Button>
         </>
@@ -76,7 +76,7 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
           </Content>
           <div className="flex justify-between">
             <Button
-              className="blinking text-base font-bold bg-slate-700 mt-8 mr-8 "
+              className="text-base font-bold bg-slate-700 mt-8 mr-8 "
               onClick={() => setStep(ISSUE)}
             >
               ← PREV STEP
@@ -96,7 +96,7 @@ export const Holder = ({ setStep }: { setStep: (state: string) => void }) => {
 
           <div>
             <Button
-              className="blinking text-base font-bold bg-slate-700 mt-8 mr-8 "
+              className="text-base font-bold bg-slate-700 mt-8 mr-8 "
               onClick={() => setStep(ISSUE)}
             >
               ← PREV STEP

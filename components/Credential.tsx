@@ -53,7 +53,7 @@ export const Credential = ({
 
       <Explain
         description="우리는 학교측에 대학 증명서를 발급해달라 요청했어요. 이제 학교(Issuer) 는 증명서를 발급할거예요. 
-      학교측은 [ 'name', 'studentId', 'department'] 에 대해 드러낼 수 있는지, 없는지를 허락해줬다고 가정할게요."
+      학교측은 [ 'name', 'studentId', 'department'] 에 대해 선택적으로 공개(Selective Disclosure)할 수 있게 허락해줬다고 가정할게요."
       />
       <Button
         onClick={createCredential}
@@ -119,7 +119,7 @@ interface CredentialStep2Props {
 const CredentialStep2 = ({ STEP2, getClaims }: CredentialStep2Props) => (
   <>
     {STEP2 && (
-      <Button onClick={getClaims} className="mb-8">
+      <Button onClick={getClaims} className="blinking mb-8">
         토큰 풀어보기 (get Claims)
       </Button>
     )}
