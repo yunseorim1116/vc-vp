@@ -101,7 +101,7 @@ const CredentialStep1 = ({ credential, t }: CredentialStepProps) => (
         <p className="text-gray-500 mb-4">{t("issue")}</p>
       </Content>
     )}
-    <Explain description={t("credentailDesc1")} />
+    <Explain description={t("credentailDesc2")} />
   </>
 );
 interface CredentialStep2Props {
