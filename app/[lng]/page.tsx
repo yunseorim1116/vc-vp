@@ -8,19 +8,22 @@ import { useState } from "react";
 import { Verifier } from "@/components/Verifier";
 import Image from "next/image";
 import { ISSUE, HOLDER, VERIFY } from "@/const/status";
+import { useTranslation } from "../i18n/client";
 
-export default function Home() {
+export default function Home({ params: { lng } }: { params: { lng: string } }) {
+  const { t } = useTranslation(lng);
+
   const [step, setStep] = useState(ISSUE);
   const [loading, setLoading] = useState(false);
 
   const renderStepComponent = () => {
     switch (step) {
       case ISSUE:
-        return <Credential setStep={handleNextStep} />;
+        return <Credential setStep={handleNextStep} lng={lng} />;
       case HOLDER:
-        return <Holder setStep={handleNextStep} />;
+        return <Holder setStep={handleNextStep} lng={lng} />;
       case VERIFY:
-        return <Verifier setStep={handleNextStep} />;
+        return <Verifier setStep={handleNextStep} lng={lng} />;
       default:
         return null;
     }
@@ -36,7 +39,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24  ">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="mt-20 w-[48rem] main-container">
         <div className="flex justify-center items-center mb-8 pr-5">
           <Image
@@ -47,7 +50,7 @@ export default function Home() {
             height={381}
           />
         </div>
-        <Description step={step} />
+        <Description step={step} lng={lng} />
         {loading ? <Loading /> : <>{renderStepComponent()}</>}
       </div>
     </main>

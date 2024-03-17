@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import ReactQueryProviders from "./hooks/useReactQuery";
+import "../globals.css";
+import ReactQueryProviders from "../hooks/useReactQuery";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import { languages } from "../i18n/settings";
+
+import { dir } from "i18next";
+
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }));
+}
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,15 +25,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params: { lng },
 }: Readonly<{
   children: React.ReactNode;
+  params: {
+    lng: string;
+  };
 }>) {
   return (
-    <html lang="ko">
+    <html lang={lng} dir={dir(lng)}>
       <body className={inter.className}>
         <ReactQueryProviders>
           <Header />
           {children}
+          <Footer lng={lng} />
         </ReactQueryProviders>
       </body>
     </html>

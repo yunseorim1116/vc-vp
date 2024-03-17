@@ -13,7 +13,7 @@ export const DialogDemo = ({ children }: any) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">코드 보기</Button>
+        <Button variant="outline">view code</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[750px]">
         <DialogHeader>

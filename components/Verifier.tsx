@@ -12,8 +12,16 @@ import { Toaster } from "@/components/ui/toaster";
 import { Badge } from "@/components/ui/badge";
 import Script from "next/script";
 import JSConfetti from "js-confetti";
+import { useTranslation } from "@/app/i18n/client";
 
-export const Verifier = ({ setStep }: { setStep: (state: string) => void }) => {
+export const Verifier = ({
+  setStep,
+  lng,
+}: {
+  setStep: (state: string) => void;
+  lng: string;
+}) => {
+  const { t } = useTranslation(lng);
   const [verify, setVerify] = useState(false);
   const { toast } = useToast();
   const formattedDate = new Date().toLocaleString();
@@ -22,7 +30,7 @@ export const Verifier = ({ setStep }: { setStep: (state: string) => void }) => {
   const verifyPresent = async () => {
     setVerify(true);
     toast({
-      title: "입증이 완료 되었어요!",
+      title: "complete!",
       description: `Verification completed on ${formattedDate}`,
     });
   };
@@ -30,20 +38,17 @@ export const Verifier = ({ setStep }: { setStep: (state: string) => void }) => {
   return (
     <div>
       <Chapter
-        text="📲 과외 플랫폼"
+        text={t("platform")}
         text2="(Verifier)"
-        desc="자격증 정보 입증하기"
+        desc={t("provingYoutCredentials")}
       />
       <br />
-      <Explain
-        description="VP를 만들어서 과외플랫폼에 제출했어요. 이제 플랫폼은 이 증명서를 입증해야 해요. 
-      서명이 변경되거나 VP가 조작된 것이라면 분명 문제가 생기겠죠. 과외 플랫폼은 이제 VP를 인증할거예요."
-      />
+      <Explain description={t("verifyDesc2")} />
       <Button
         onClick={verifyPresent}
         className={`mr-4 mb-8 ${verify ? "" : "blinking"}`}
       >
-        입증하기 (verify)
+        {t("verify")}
       </Button>
 
       <DialogDemo>
@@ -60,9 +65,9 @@ export const Verifier = ({ setStep }: { setStep: (state: string) => void }) => {
             onLoad={() => jsConfetti.addConfetti()}
           />
           <Badge variant="destructive" className="text-xl">
-            인증 완료
+            {t("verifyComplete")}
           </Badge>
-          <Explain description="입증이 완료 되었어요! 플랫폼 측에서는 필요로 하는 요소(requiredClaims)을 넣고 조작된 토큰인지 아닌지를 검증해요. 모든 스텝을 완료했습니다. 축하합니다!" />
+          <Explain description={t("verifyDesc1")} />
           <Button
             className="text-base font-bold bg-slate-700 mt-8"
             onClick={() => setStep(HOLDER)}
