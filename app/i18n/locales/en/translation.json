@@ -21,6 +21,7 @@
   "disclosure": "Reveal only the information you need",
   "issuePresent": "My school has issued me a verification of enrollment (VC), but there is some information I don't want to make public. I'm going to self-select the information disclosed in the VC that I want to make public and submit it to the tutoring platform. Using the VC, we will now create a VP. Now that I think about it, I think it's okay to disclose my name, but I still don't want to disclose the other information.",
   "present": "present",
+  "presentDesc1": "My school has issued me a verification of enrollment (VC), but there is some information I don't want to disclose. I'm going to self-select the information disclosed in the VC that I want to disclose and submit it to the tutoring platform. Using the VC, we will now create a VP. Now that I think about it, I think it's okay to disclose my name, but I still don't want to disclose the other information",
   "presentDesc2": "When I run the present function, I'm issued a VP based on VC. I've decided what information I want to reveal when I run the present function, let's unlock the token.",
   "presentDesc3": "I used the present function to create a certificate that combines only the information I want to make public! I'll call it a VP, and now all I have to do is submit it to the tutoring platform.",
   "platform": "📲 Tutoring platform",
