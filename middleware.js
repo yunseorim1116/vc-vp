@@ -10,16 +10,16 @@ export const config = {
 };
 
 export function middleware(req) {
+  const allowedExtensions = [".svg", ".png", ".jpg", ".jpeg", ".webp"];
+  const isFile = allowedExtensions.find((i) =>
+    req.nextUrl.pathname.includes(i)
+  );
+  if (isFile) return NextResponse.next();
   let lng;
   if (req.cookies.has(cookieName))
     lng = acceptLanguage.get(req.cookies.get(cookieName).value);
   if (!lng) lng = acceptLanguage.get(req.headers.get("Accept-Language"));
   if (!lng) lng = fallbackLng;
-
-  // 이미지 폴더인 경우 리다이렉트를 수행하지 않음
-  if (req.nextUrl.pathname.startsWith("/images")) {
-    return NextResponse.next();
-  }
 
   // Redirect if lng in path is not supported
   if (
