@@ -2,9 +2,9 @@
 
 import { useTranslation } from "../../app/i18n/client";
 import Link from "next/link";
-import { Trans } from "react-i18next/TransWithoutContext";
-import { languages } from "../../app/i18n/settings";
+import { languages } from "@/app/i18n/settings";
 import { TFunction } from "i18next";
+import { SelectLanguage } from "./Select";
 
 export const Footer = ({ lng }: { lng: string }) => {
   const { t } = useTranslation(lng, "footer");
@@ -28,12 +28,5 @@ export const FooterBase = ({ t, lng }: FooterProps) => {
     ));
   };
 
-  return (
-    <div>
-      <Trans i18nKey="languageSwitcher" t={t}>
-        Switch from <strong>{lng}</strong> to:
-      </Trans>
-      {renderLanguageLinks()}
-    </div>
-  );
+  return <SelectLanguage t={t} lng={lng} />;
 };
