@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "local": "env-cmd -f .env.localhost next dev",
+    "dev": "env-cmd -f .env.localhost next dev",
     "build": "next build",
     "build:dev": "env-cmd -f .env.development next build",
     "start": "next start",
