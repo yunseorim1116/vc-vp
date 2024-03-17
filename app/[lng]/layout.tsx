@@ -1,26 +1,26 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "../globals.css";
-import ReactQueryProviders from "../hooks/useReactQuery";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import { languages } from "../i18n/settings";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import '../globals.css';
+import ReactQueryProviders from '../hooks/useReactQuery';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import { languages } from '../i18n/settings';
 
-import { dir } from "i18next";
+import { dir } from 'i18next';
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
 }
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Study Issuer / Holder / Verifier Concept",
+  title: 'Study Issuer / Holder / Verifier Concept',
   description: "let's start to use sd-jwt ",
   icons: {
-    icon: "/Brand_B.svg",
+    icon: '/Brand_B.svg',
   },
-  keywords: ["sd-jwt", "jwt", "ssi", "ofw"],
+  keywords: ['sd-jwt', 'jwt', 'ssi', 'ofw'],
 };
 
 export default function RootLayout({
@@ -36,7 +36,7 @@ export default function RootLayout({
     <html lang={lng} dir={dir(lng)}>
       <body className={inter.className}>
         <ReactQueryProviders>
-          <Header />
+          <Header lng={lng} />
           {children}
           <Footer lng={lng} />
         </ReactQueryProviders>
