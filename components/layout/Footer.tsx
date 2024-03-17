@@ -1,9 +1,9 @@
 "use client";
 
-import { useTranslation } from "../../../i18n/client";
+import { useTranslation } from "../../app/i18n/client";
 import Link from "next/link";
 import { Trans } from "react-i18next/TransWithoutContext";
-import { languages } from "../../../i18n/settings";
+import { languages } from "../../app/i18n/settings";
 import { TFunction } from "i18next";
 
 export const Footer = ({ lng }: { lng: string }) => {
