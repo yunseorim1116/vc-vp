@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import ReactQueryProviders from "../hooks/useReactQuery";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import { languages } from "../i18n/settings";
 
 import { dir } from "i18next";
@@ -37,6 +38,7 @@ export default function RootLayout({
         <ReactQueryProviders>
           <Header />
           {children}
+          <Footer lng={lng} />
         </ReactQueryProviders>
       </body>
     </html>

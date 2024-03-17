@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { languages } from "@/app/i18n/settings";
 
-export function SelectLanguage({ t, lng }: any) {
+export function SelectLanguage({ lng }: any) {
   const router = useRouter();
   const otherLanguages = languages.filter((language) => language !== lng);
 
