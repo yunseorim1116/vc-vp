@@ -2,7 +2,6 @@ import nextMDX from "@next/mdx";
 import rehypeHighlight from "rehype-highlight";
 
 const nextConfig = {
-  basePath: "/app",
   pageExtensions: ["ts", "tsx", "js", "jsx", "mdx"],
   experimental: {
     appDir: true,
