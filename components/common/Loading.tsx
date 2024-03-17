@@ -14,7 +14,7 @@ export const Loading = () => {
       <div className="moving-image-container">
         <Image
           className="moving-image"
-          src="/vc를든나.png"
+          src={`${process.env.PUBLIC_URL}/vc를든나.png`}
           alt="vc를든나."
           width={350}
           height={24}
