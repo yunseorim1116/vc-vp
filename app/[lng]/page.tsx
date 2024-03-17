@@ -9,7 +9,7 @@ import { Verifier } from "@/components/Verifier";
 import Image from "next/image";
 import { ISSUE, HOLDER, VERIFY } from "@/const/status";
 import { useTranslation } from "../i18n/client";
-import { FooterBase } from "./components/Footer/FooterBase";
+import { FooterBase } from "./components/Footer/Footer";
 
 export default function Home({ params: { lng } }: { params: { lng: string } }) {
   const { t } = useTranslation(lng);
