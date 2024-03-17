@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import axios from "axios";
-import { Button } from "@/components/ui/button";
-import { sdDatas } from "@/datas/claims";
-import JsonFormatter from "react-json-formatter";
-import Link from "next/link";
-import { Explain } from "./common/Explain";
-import "./button.css";
-import { Chapter } from "./common/Chapter";
-import { Content } from "./common/Content";
-import { Skip } from "./common/Skip";
-import { jsonStyle } from "@/const/style";
-import { HOLDER } from "@/const/status";
-import { DialogDemo } from "./common/DialogDemo";
-import CredentialCode from "@/components/mdx/credential.mdx";
-import { useTranslation } from "@/app/i18n/client";
-import { TFunction } from "i18next";
+import { useState } from 'react';
+import axios from 'axios';
+import { Button } from '@/components/ui/button';
+import { sdDatas } from '@/datas/claims';
+import JsonFormatter from 'react-json-formatter';
+import Link from 'next/link';
+import { Explain } from './common/Explain';
+import './button.css';
+import { Chapter } from './common/Chapter';
+import { Content } from './common/Content';
+import { Skip } from './common/Skip';
+import { jsonStyle } from '@/const/style';
+import { HOLDER } from '@/const/status';
+import { DialogDemo } from './common/DialogDemo';
+import CredentialCode from '@/components/mdx/credential.mdx';
+import { useTranslation } from '@/app/i18n/client';
+import { TFunction } from 'i18next';
 
 export const Credential = ({
   setStep,
@@ -49,14 +49,14 @@ export const Credential = ({
 
   return (
     <>
-      <Chapter text={t("school")} text2="(Issuer)" desc={t("chapter1")} />
+      <Chapter text={t('school')} text2="(Issuer)" desc={t('chapter1')} />
 
-      <Explain description={t("credentailDesc1")} />
+      <Explain description={t('credentailDesc1')} />
       <Button
         onClick={createCredential}
-        className={`mr-4 mb-8 ${credential ? "" : "blinking"}`}
+        className={`mr-4 mb-8 ${credential ? '' : 'blinking'}`}
       >
-        {t("letsIssue")}
+        {credential ? 'Done!' : t('letsIssue')}
       </Button>
 
       <DialogDemo>
@@ -98,10 +98,10 @@ const CredentialStep1 = ({ credential, t }: CredentialStepProps) => (
       <Content>{credential}</Content>
     ) : (
       <Content>
-        <p className="text-gray-500 mb-4">{t("issue")}</p>
+        <p className="text-gray-500 mb-4">{t('issue')}</p>
       </Content>
     )}
-    <Explain description={t("credentailDesc2")} />
+    <Explain description={t('credentailDesc2')} />
   </>
 );
 interface CredentialStep2Props {
@@ -114,7 +114,7 @@ const CredentialStep2 = ({ STEP2, getClaims, t }: CredentialStep2Props) => (
   <>
     {STEP2 && (
       <Button onClick={getClaims} className="blinking mb-8">
-        {t("getClaims")}
+        {t('getClaims')}
       </Button>
     )}
   </>
@@ -142,7 +142,7 @@ export const CredentialStep3 = ({
             <div className="max-w-500 flex p-8mb-4 mt-4overflow-scroll">
               <div className="w-1/2 ">
                 <Link href="https://www.sdjwt.co/" className="font-bold mb-4">
-                  {t("link1")}
+                  {t('link1')}
                 </Link>
 
                 <JsonFormatter
@@ -153,7 +153,7 @@ export const CredentialStep3 = ({
               </div>
               <div className="w-1/2 ">
                 <Link href="https://jwt.io/" className="font-bold mb-4">
-                  {t("link2")}
+                  {t('link2')}
                 </Link>
 
                 <JsonFormatter
@@ -165,13 +165,13 @@ export const CredentialStep3 = ({
             </div>
           </Content>
 
-          <Explain description={t("credentailDesc3")} />
+          <Explain description={t('credentailDesc3')} />
 
           <p className="text-xl font-bold  mb-4">[ ✔️ ] Mission1 Complete !</p>
           <p>
-            {t("complete")}
+            {t('complete')}
             <br />
-            {t("thisIsVc")}
+            {t('thisIsVc')}
           </p>
           <Button
             className="blinking text-2xl font-bold bg-slate-700 mt-8"
