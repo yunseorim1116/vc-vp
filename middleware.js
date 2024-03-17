@@ -16,6 +16,11 @@ export function middleware(req) {
   if (!lng) lng = acceptLanguage.get(req.headers.get("Accept-Language"));
   if (!lng) lng = fallbackLng;
 
+  // 이미지 폴더인 경우 리다이렉트를 수행하지 않음
+  if (req.nextUrl.pathname.startsWith("/images")) {
+    return NextResponse.next();
+  }
+
   // Redirect if lng in path is not supported
   if (
     !languages.some((loc) => req.nextUrl.pathname.startsWith(`/${loc}`)) &&

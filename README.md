@@ -19,7 +19,7 @@ npm run dev
 # or
 yarn dev
 # or
-pnpm local
+pnpm dev
 # or
 bun dev
 ```
