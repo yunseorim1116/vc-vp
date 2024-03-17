@@ -114,7 +114,7 @@ const CredentialStep2 = ({ STEP2, getClaims, t }: CredentialStep2Props) => (
   <>
     {STEP2 && (
       <Button onClick={getClaims} className="blinking mb-8">
-        {t("getClaims")} /
+        {t("getClaims")}
       </Button>
     )}
   </>
