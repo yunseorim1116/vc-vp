@@ -5,9 +5,7 @@
   "scripts": {
     "dev": "env-cmd -f .env.localhost next dev",
     "build": "next build",
-    "build:dev": "env-cmd -f .env.production next build",
-    "start": "next start",
-    "start:dev": "env-cmd -f .env.production next start"
+    "start": "next start"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",
